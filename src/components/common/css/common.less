@@ -1,0 +1,653 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  font-size: 16px;
+
+  #app {
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+}
+
+
+
+.app_header {
+  height: 120px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 0 10px;
+  position: absolute;
+  width: 100%;
+  z-index: 20;
+  background-image: linear-gradient(rgba(22, 80, 195, 1), rgba(0, 0, 0, 0));
+
+
+  .app_icon,
+  .app_toptab {
+    display: inline-block;
+  }
+
+  .app_toptab_outside {
+    background-size: 100% 100%;
+  }
+
+  .app_toptab_normal {
+    background-size: 100% 100%;
+  }
+
+  .app_toptab_position {
+    width: 100%;
+    padding-top: 8px;
+
+    // >div {
+    //   height: 100%;
+    // }
+
+    .app_toptab {
+      list-style: none;
+      position: relative;
+
+      li {
+        line-height: 40px;
+        display: inline-block;
+        text-align: center;
+        font-size: 28px;
+        font-weight: bolder;
+        // color: #FFC649;
+        background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#514ef3), to(#d2d5ff));
+        background-clip: text;
+        /*必需加前缀 -webkit- 才支持这个text值 */
+        -webkit-background-clip: text;
+        /*text-fill-color会覆盖color所定义的字体颜色： */
+        -webkit-text-fill-color: transparent;
+        // text-shadow: 0px 2px 0px rgba(114, 66, 4, 0.6);
+        cursor: pointer;
+
+        a {
+          text-decoration: none;
+        }
+      }
+
+      li:after {
+        content: "";
+        display: inline-block;
+        background-image: url("../image/bgP.png");
+        height: 24px;
+        width: 24px;
+        margin: 0 10px;
+      }
+
+      li:last-child:after {
+        visibility: hidden;
+        width: 0;
+        margin-left: 0;
+      }
+
+      .top_active {
+        background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#fff83c), to(#ffae5e));
+      }
+    }
+
+
+    .app_toptab:before,
+    .app_toptab:after {
+      content: "";
+      display: inline-block;
+      height: 12px;
+      width: 150px;
+      position: relative;
+      top: -4px;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+
+    .app_toptab:before {
+      background-image: url("../image/line2.png");
+      margin-right: 30px;
+    }
+
+    .app_toptab:after {
+      background-image: url("../image/line.png");
+      margin-left: 30px;
+    }
+
+    .tip {
+      position: absolute;
+      right: 60px;
+      top: 15px;
+    }
+
+    .userBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+
+
+
+
+    }
+
+
+  }
+
+  .app_icon {
+    position: fixed;
+    left: 16px;
+    top: 6px;
+    font-size: 38px;
+    font-weight: bolder;
+    letter-spacing: 4px;
+
+
+    i {
+      vertical-align: top;
+      line-height: 40px;
+      display: inline-block;
+      font-size: 24px;
+      font-style: normal;
+    }
+
+    img {
+      height: 80%;
+    }
+  }
+
+  .app_icon2 {
+    position: fixed;
+    right: 25px;
+    top: 19px;
+    display: flex;
+
+    img {
+      height: 24px;
+      width: 150px;
+    }
+
+    .chooseButton {
+      cursor: pointer;
+      width: 23px;
+      height: 24px;
+      line-height: 28px;
+      margin-left: 20px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+
+.app_container {
+  height: 100%;
+}
+
+.user_list {
+  li {
+    list-style: none;
+    text-align: center;
+
+    a {
+      color: #29d3f0;
+      cursor: pointer;
+    }
+  }
+
+  li:last-child {
+    padding-top: 5px;
+  }
+}
+
+
+
+
+.esri-ui {
+  .esri-widget {
+    background-color: unset;
+  }
+
+  //  图例框宽度
+  .esri-ui-corner .esri-expand .esri-widget--panel,
+  .esri-ui-corner .esri-expand .esri-widget--panel-height-only,
+  .esri-ui-corner .esri-component.esri-widget--panel {
+    width: unset !important;
+    padding-bottom: 5px;
+    // padding: 5px;
+    // padding-right: 10px;
+  }
+
+  .esri-ui-bottom-right,
+  .esri-ui-bottom-left {
+    left: 360px;
+    transition: all 1s;
+    z-index: 15;
+
+    .esri-legend__service {
+      padding: 0px;
+    }
+
+    .esri-legend {
+      overflow: hidden;
+      overflow-y: auto;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 4px;
+      max-height: 340px !important;
+
+      .esri-mytitle {
+        // background-color: #5ebef0;
+        background-image: linear-gradient(#4691ed, rgba(0, 0, 0, 0));
+        margin-bottom: 5px;
+        font-size: 15px;
+        font-weight: bolder;
+      }
+    }
+
+    .esri-legend::-webkit-scrollbar {
+      display: block;
+      width: 6px;
+      background-color: rgb(146, 146, 146);
+      border-radius: 3px;
+    }
+
+    .esri-legend::-webkit-scrollbar-thumb {
+      width: 6px;
+      background-color: rgb(68, 68, 68);
+      border-radius: 3px;
+    }
+
+    .esri-legend__layer {
+      margin-left: 0px;
+    }
+
+    .esri-legend__layer-body {
+      margin-left: 0px;
+    }
+
+    .esri-legend__layer-cell {
+      min-width: 65px;
+      min-height: 0px;
+      padding: 0px;
+    }
+
+    .esri-widget__heading {
+      color: unset;
+      margin: 0px;
+    }
+  }
+
+  //  图例服务图层名称
+  .esri-legend__layer-caption {
+    display: none;
+  }
+
+  //  图例服务图层margin-bottom样式
+  .esri-legend__layer-table {
+    margin-bottom: 0px;
+  }
+
+  //  左上放大缩小
+  .esri-ui-top-left {
+    display: none;
+  }
+
+  //  powerd
+  .esri-attribution {
+    display: none;
+  }
+
+  //  popup
+  .esri-popup {
+    color: #000;
+    z-index: 10;
+
+    .esri-popup__main-container {
+      width: 430px;
+      max-height: 500px;
+      //height: 348px;
+      box-sizing: border-box;
+      padding: 10px;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      overflow: hidden;
+      background-repeat: repeat;
+      color: #2AFFFA;
+      //background-color: #162449;
+      background-image: url("../image/yqpop.png");
+
+      //border: 1px solid #02fffc;
+
+      .dkTitle {
+        text-align: left;
+        font-size: 16px;
+        padding-bottom: 10px;
+        padding-left: 4px;
+      }
+
+
+
+      .bottomBtn {
+        position: absolute;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        font-size: 16px;
+        bottom: 0px;
+        left: 50%;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        border: 1px #fff solid;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .bottomBtn2 {
+        position: absolute;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        font-size: 16px;
+        bottom: 0px;
+        left: 38%;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        border: 1px #fff solid;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .bottomBtn3 {
+        position: absolute;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        font-size: 16px;
+        bottom: 0px;
+        left: 62%;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        border: 1px #fff solid;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .frameBtn {
+        background-color: #162449 !important;
+        border: 1px solid #75c8f4 !important;
+        border-radius: 2px;
+        padding: 4px 4px !important;
+        color: #fff;
+        margin-left: 8px;
+        cursor: pointer;
+        font-size: 14px !important;
+        text-align: center;
+      }
+    }
+
+    .esri-popup__content {
+      margin: 0px 15px 20px;
+    }
+
+    .esri-popup__header-container--button {
+      outline: none;
+    }
+
+    .esri-popup__header-title:hover {
+      background-color: rgba(25, 43, 78, 0.8);
+      font-size: 18px;
+    }
+
+    .esri-popup__content::-webkit-scrollbar {
+      display: none;
+    }
+
+    .esri-popup__footer {
+      display: none;
+    }
+
+    .esri-popup__button--dock {
+      display: none;
+    }
+
+    .esri-popup__pointer-direction {
+      background-color: rgba(37, 37, 37);
+    }
+
+    .esri-popup__button {
+      color: #fff;
+    }
+
+    .esri-popup__button:hover {
+      background-color: rgba(25, 43, 78, 0.8);
+    }
+
+    .esri-popup__header-title {
+      text-align: center;
+      font-size: 20px;
+      color: rgba(130, 255, 252, 1);
+      line-height: 30px;
+    }
+
+    .poptemplate_frame {
+      width: 100%;
+
+      >div {
+        width: 100%;
+        text-align: left;
+        font-size: 16px;
+        line-height: 22px;
+
+        >img {
+          width: 100%;
+          max-height: 200px;
+        }
+      }
+
+      .poptemplate_title {
+        font-size: 19px;
+        color: #13E3FF;
+        height: 52px;
+      }
+
+      .poptemplate_frame_img {
+        >img {
+          width: 180px;
+          float: left;
+          margin-right: 10px;
+          margin-bottom: 5px;
+        }
+      }
+
+      ul {
+        width: 100%;
+        height: 100%;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+
+        li {
+          flex: 1;
+          color: #fff;
+          font-size: 17px;
+          line-height: 27px;
+
+          span {
+            color: #2AFFFA;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 日历背景色
+.wh_content_all {
+  background-color: #6494e5 !important;
+  border-radius: 6px;
+}
+
+.wh_content_item .wh_isToday {
+  background: #0ff;
+}
+
+
+// element-table
+.el-table th,
+.el-table tr {
+  background-color: #24386a !important;
+}
+
+.el-table__body-wrapper {
+  height: calc(100% - 60px) !important;
+}
+
+.el-table thead,
+.el-table tbody {
+  color: #fff !important;
+  font-size: 16px;
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover>td>div,
+.el-table--enable-row-hover .el-table__body tr:hover>td>div>div>i {
+  color: #000 !important;
+  cursor: pointer;
+}
+
+.el-table .warning-row {
+  color: #ffa901 !important;
+  font-weight: bolder !important;
+}
+
+.el-table .timeout-row {
+  color: #ee4d4d !important;
+  font-weight: bolder !important;
+}
+
+.el-icon-arrow-right {
+  color: #fff !important;
+  font-size: 16px;
+}
+
+.el-timeline-item__timestamp {
+  color: #fff !important;
+  font-size: 18px !important;
+}
+
+// 弹出框
+.el-popover {
+  min-width: 0px !important;
+}
+
+.drop-active {
+  color: #0ff !important;
+  font-weight: bolder;
+  background: #243968;
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.4),
+    0px 0px 44px 0px rgba(16, 146, 236, 0.3);
+}
+
+#dropClass {
+  .el-button {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+
+.menuClass {
+  background-color: #409eff !important;
+  border: 1px solid #409eff !important;
+
+  li {
+    color: #fff;
+  }
+
+  li:hover {
+    color: #000;
+  }
+}
+
+// 下拉菜单
+#selClass {
+  >div {
+    width: 90%;
+
+    input {
+      background-color: #495a94;
+      border: 1px solid #2da4da;
+      padding: 7px 9px;
+      color: #fff;
+    }
+  }
+}
+
+#warning #table {
+
+  .el-table thead,
+  .el-table tbody {
+    color: #fff !important;
+    font-size: 18px;
+  }
+
+  .el-table td {
+    border-bottom: 1px solid #17035A;
+  }
+
+  .el-table th {
+    background-color: #1A1364 !important;
+  }
+
+  .el-table th.is-leaf {
+    border-bottom: none !important;
+  }
+
+  .el-table tr {
+    background-color: #264C97 !important;
+  }
+
+  .el-table__body-wrapper::-webkit-scrollbar {
+    display: block;
+    width: 10px;
+    background-color: #1a3561;
+  }
+
+  .el-table__body-wrapper::-webkit-scrollbar-thumb {
+    width: 10px;
+    background-color: #45cdff;
+    border-radius: 10px;
+  }
+
+  .el-table th>.cell {
+    color: #09CADD;
+  }
+
+  .el-table__body {
+    width: 100% !important;
+  }
+
+  .el-table::before {
+    background-color: #264c97;
+  }
+}

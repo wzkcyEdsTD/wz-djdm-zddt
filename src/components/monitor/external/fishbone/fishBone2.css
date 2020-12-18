@@ -1,0 +1,81 @@
+.fish-bone-axis,
+.fish-bone-content,
+.fish-bone-node,
+.fish-bone-line {
+    position: absolute;
+    background-color: #f5f5f5;
+}
+
+.fish-bone-axis {
+    top: 200px;
+    height: 10px;
+    width: 1500px;
+    left: 10px;
+    border-radius: 5px;
+}
+
+.fish-bone-content {
+    padding: 16px;
+    /* width: 207px; */
+    width: 230px;
+    text-align: justify;
+    border-radius: 4px;
+    border: 1px solid #f5f5f5;
+    font-size: 18px;
+    color: #000;
+}
+
+.fish-bone-node {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #038DC5;
+}
+
+.fish-bone-block {
+    cursor: pointer;
+}
+
+.fish-bone-line {
+    height: 40px;
+    width: 2px;
+    background-color: #f5f5f5;
+}
+
+.fish-bone {
+    position: relative;
+    height: 400px;
+}
+
+.active-node {
+    border-width: 3px;
+    border-style: solid;
+}
+
+.date-conent {
+    width: 109px;
+    text-align: center;
+    color: #fff;
+    background: #1b45a7;
+}
+
+.ks_label {
+    font-style: italic;
+    font-weight: bolder;
+    display: block;
+}
+
+.nr_label {
+    font-weight: bolder;
+}
+
+.cs_label {
+    font-weight: bolder;
+    color: #ff3229;
+}
+
+.yj_label {
+    font-weight: bolder;
+    color: #ffa901;
+}
